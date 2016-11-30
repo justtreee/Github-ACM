@@ -1,0 +1,87 @@
+/*质方数
+Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)
+Total Submission(s): 0    Accepted Submission(s): 0
+
+
+Problem Description
+  小明天生对数字比较敏感，3岁的时候就能背诵圆周率一百位。
+
+  现在，小明慢慢长大了，但依然很喜欢数字，最近，他迷上了质数和平方数，并且自己把质数的平方命名为“质方数”。
+  现在，他在研究这样一个问题：距离一个正整数N最接近的质方数是多少？
+ 
+
+Input
+输入数据第一行是一个正整数T（T<=20），表示有T组输入数据。
+接下来T行，每行输入一个正整数N（1<=N<=10^8）。
+ 
+
+Output
+对于每组数据，请输出距离N最接近的质方数，每组输出占一行。
+
+ 
+
+Sample Input
+2
+1
+10
+ 
+
+Sample Output
+4
+9
+*/
+#include<stdio.h>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int t,n,temp,i,j,lar,sml;
+    int a[10001]={0};
+    a[0] = a[1] =1;
+    scanf("%d",&t);
+    for(i =2; i<=5000; i++)
+    {
+        for(j = i<<1; j < 10001; j+=i)
+        {
+            a[j] = 1;
+        }
+    }
+
+    while(t--)
+    {
+        scanf("%d",&n);
+        temp = sqrt(n);
+        if(temp == 1)
+        {
+
+                printf("4\n");
+        }
+        else if(temp*temp == n && a[temp] == 0)
+        {
+            printf("%d\n",n);
+        }
+        else
+        {
+            for(sml = temp; sml>=2; sml--)
+            {
+                if(a[sml]==0)
+                    break;
+            }
+            for(lar = temp+1; lar <=10000; lar++)
+            {
+                if(a[lar]==0)
+                    break;
+            }
+            if(n-sml*sml <= lar*lar -n)
+            {
+                printf("%d\n",sml*sml);
+            }
+            else
+                printf("%d\n",lar*lar);
+
+        }
+    }
+
+return 0;
+}

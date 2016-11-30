@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    while(~scanf("%d",&n))
+    {
+        printf("%d\n",(n*n*n+5*n+6)/6);
+    }
+
+return 0;
+}
+/*hdu1290
+这类问题一般都有固定的公式，
+告诉大家一个技巧：二维的一般是
+f(x)=a*x^2+b*x+c,
+三维的一般是
+f(x)=a*x^3+b*x^2+c*x+d.
+用带定系数法求出各个系数就行了。
+*/

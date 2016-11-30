@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <ctype.h>
+#define LEN 1000
+#define N 100
+int main()
+{
+    int n,m,j=0,i,digit,flag = 0;
+    char a[N][LEN];
+    scanf("%d",&n);
+    m = n+1;
+    while(m--)
+    {
+        digit = 0;
+        gets(a[j]);
+        for(i = 0; a[j][i] != '\0';i++)
+        {
+            if(isdigit(a[j][i]) )
+                digit++;
+        }
+        if(flag)
+            printf("%d\n",digit);
+        flag = 1;
+        j++;
+    }
+
+return 0;
+}

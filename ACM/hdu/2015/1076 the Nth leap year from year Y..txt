@@ -1,0 +1,67 @@
+#include <stdio.h>
+int isleap(int y);
+int main()
+{
+    int t,y,n,start,count;
+    int flag,i;
+    scanf("%d",&t);
+    while(t--)
+    {
+        count = 0;
+        flag = 0;
+        scanf("%d %d",&y,&n);
+        start = isleap(y);
+        if(start)
+        {
+            count = 1;
+            if(n > 1)
+            {
+                do{
+                    y += 4;
+                    flag = isleap(y);
+                    if(flag)
+                        count++;
+                }while(count < n);
+            }
+        }
+        else
+        {
+            for(i = 1;i < 10; i++)
+            {
+                flag = isleap(y+i);
+                if(flag)
+                {
+                    y += i;
+                    break;
+                }
+            }
+            count++;
+
+        }
+        if(count == n)
+        {
+            printf("%d\n",y);
+        }
+        else
+        {
+            do{
+                y+=4;
+                flag = isleap(y);
+                if(flag)
+                    count++;
+
+            }while(count < n);
+            printf("%d\n",y);
+        }
+    }
+return 0;
+}
+
+
+int isleap(int y)
+{
+    if((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+        return 1;
+    else
+        return 0;
+}

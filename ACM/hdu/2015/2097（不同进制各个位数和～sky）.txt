@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int main()
+{
+    int x;
+    int q10,q16,q12;
+    int t;
+    while(~scanf("%d",&x) && (x >= 1000) && (x<=9999) && (x != 0))
+    {
+        q10 = q16 = q12 = 0;
+
+        t = x;
+
+        while(t)
+        {
+            q10 += t %10;
+            t /= 10;
+        }
+        t = x;
+
+        while(t)
+        {
+            q16 += t %16;
+            t /= 16;
+        }
+
+        if(q10 != q16)
+        {
+            printf("%d is not a Sky Number.\n",x);
+        }
+        else
+        {
+            t = x;
+            while(t)
+            {
+                q12 += t %12;
+                t /= 12;
+            }
+
+            if(q10 != q12)
+            {
+                printf("%d is not a Sky Number.\n",x);
+            }
+
+            else
+                printf("%d is a Sky Number.\n",x);
+
+        }
+
+    }
+return 0;
+}

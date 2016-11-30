@@ -1,0 +1,21 @@
+#include <stdio.h>
+#define PI 3.1415926  /*only 3.14,acos(-1) can not [wa]*/
+
+int main()
+{
+	int n,year,i;
+	double x,y,dd,a;
+	scanf("%d",&n);
+	for(i = 1; i<=n; i++)
+	{
+
+		scanf("%lf %lf",&x,&y);
+		dd = x*x+y*y;
+		a = PI*dd/2.0;
+		year = (int)(a/50.0)+1;
+        printf("Property %d: This property will begin eroding in year %d.\n",i,year);
+
+	}
+	printf("END OF OUTPUT.\n");
+	return 0;
+}
